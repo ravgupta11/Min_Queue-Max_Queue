@@ -27,7 +27,7 @@ struct min_queue{
   long long pop(){
       if(remove_stack.empty())
           while(!add_stack.empty()){
-            long long int element = add_stack.top().first;
+            long long int element = add_stack.top().first; 
             add_stack.pop();
             long long int minimum = remove_stack.empty() ? element : min(element, remove_stack.top().second);
             remove_stack.push({element, minimum});
@@ -36,4 +36,7 @@ struct min_queue{
       remove_stack.pop();
       return removed_element;
   }
+  bool empty(){
+        return add_stack.empty() && remove_stack.empty();
+    }
 };
